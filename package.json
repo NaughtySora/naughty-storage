@@ -1,0 +1,38 @@
+{
+  "name": "naughty-saver",
+  "version": "0.1.0",
+  "author": "NaughtySora <naughtysora@proton.me>",
+  "description": "Nodejs Saver - storage for inverting dependency of you application, same contract",
+  "license": "MIT",
+  "main": "main.js",
+  "keywords": [
+    "saver",
+    "nodejs",
+    "node",
+    "storage",
+    "dependency-inversion"
+  ],
+  "files": [
+    "lib/",
+    "main.d.ts"
+  ],
+  "engines": {
+    "node": "18 || 19 || 20 || 21 || 22 || 23"
+  },
+  "scripts": {
+    "types": "tsc -p ./tsconfig.json",
+    "test": "node ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaughtySora/naughty-saver"
+  },
+  "bugs": {
+    "url": "https://github.com/NaughtySora/naughty-saver/issues",
+    "email": "naughtysora@proton.me"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.2"
+  }
+}
