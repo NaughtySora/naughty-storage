@@ -1,8 +1,8 @@
 {
-  "name": "naughty-saver",
+  "name": "naughty-storage",
   "version": "0.1.0",
   "author": "NaughtySora <naughtysora@proton.me>",
-  "description": "Nodejs Saver - storage for inverting dependency of you application, same contract",
+  "description": "Nodejs storage for inverting dependency of you application, same contract",
   "license": "MIT",
   "main": "main.js",
   "keywords": [
@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NaughtySora/naughty-saver"
+    "url": "git+https://github.com/NaughtySora/naughty-storage"
   },
   "bugs": {
-    "url": "https://github.com/NaughtySora/naughty-saver/issues",
+    "url": "https://github.com/NaughtySora/naughty-storage/issues",
     "email": "naughtysora@proton.me"
   },
   "devDependencies": {
