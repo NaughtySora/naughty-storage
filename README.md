@@ -6,5 +6,5 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/naughty-util)](https://www.npmjs.com/package/naughty-util) -->
 
 ## Usage
-- Install: `npm install naughty-saver`
-- Require: `const utils = require('naughty-saver')`
+- Install: `npm install naughty-storage`
+- Require: `const utils = require('naughty-storage')`
