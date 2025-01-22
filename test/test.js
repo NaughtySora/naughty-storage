@@ -133,6 +133,6 @@ module.exports = (Saver) => {
 
   const truncate = async () => Saver.truncate();
   const destroy = async () => Saver.destroy();
- 
+
   test([pick, set, keys, values, entries, del, has, clear, asyncIter, singleton, destroy, truncate]);
 };
