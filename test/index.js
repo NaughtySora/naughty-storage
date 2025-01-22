@@ -5,7 +5,5 @@ const File = require("../lib/File");
 
 const test = require("./test");
 
-(async () => {
-  await test(Memory);
-  // await test(File);
-})();
+test(Memory);
+test(File);
