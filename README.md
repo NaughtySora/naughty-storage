@@ -8,8 +8,8 @@
 
 ## Storages implement Map interface with async contract
 
-Initial purpose to use different storage like - memory, file, and more to replace dependency in your project.
-Also can be useful for convenient access to file system and much more.
+- Initial purpose to use different storages like - memory, file, and more to replace dependency in your project.
+- Also can be useful for convenient access to file system and much more.
 
 ### pick - choose callback last err first contract function to put result into storage 
 
