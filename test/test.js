@@ -107,7 +107,8 @@ module.exports = (Saver) => {
       assert.strictEqual(key, expected);
     }
     await saver.clear();
-    assert.strictEqual(await saver.size, 0);
+    const size = await saver.size;
+    assert.strictEqual(size, 0);
   };
 
   const asyncIter = async () => {
@@ -132,6 +133,6 @@ module.exports = (Saver) => {
 
   const truncate = async () => Saver.truncate();
   const destroy = async () => Saver.destroy();
-  
+ 
   test([pick, set, keys, values, entries, del, has, clear, asyncIter, singleton, destroy, truncate]);
-}
+};
