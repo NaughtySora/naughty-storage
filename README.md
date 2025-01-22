@@ -16,7 +16,7 @@ Also can be useful for convenient access to file system and much more.
 ```js
 const saver = new storage.File("collection");
 await saver.pick("key", fs.readFile, "./path");
-const output = await saver.get("file");
+const output = await saver.get("key");
 ```
 
 ### get/set
