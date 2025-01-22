@@ -21,7 +21,7 @@ const output = await saver.get("key");
 
 ### get/set
 ```js
-const storage = new storage.File("collection");
+const saver = new storage.File("collection");
 await saver.set("key", "some valuable string");
 const data = await saver.get("key");
 ```
