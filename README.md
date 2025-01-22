@@ -6,6 +6,7 @@
 - Install: `npm install naughty-storage`
 - Require: `const utils = require('naughty-storage')`
 
+## intially File storage saves data into root package folder, to change this use File.location(path) static method in root project file;
 ## Storages implement Map interface with async contract
 
 - Initial purpose to use different storages like - memory, file, and more to replace dependency in your project.
