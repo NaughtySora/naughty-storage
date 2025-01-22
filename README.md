@@ -1,4 +1,4 @@
-# Naughty Util
+# Naughty Storage
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/NaughtySora/naughty-util/blob/master/LICENSE)
 <!-- [![snyk](https://snyk.io/test/github/NaughtySora/naughty-util/badge.svg)](https://snyk.io/test/github/NaughtySora/naughty-util)
 [![npm version](https://badge.fury.io/js/naughty-util.svg)](https://badge.fury.io/js/naughty-util)
