@@ -11,7 +11,7 @@
 Initial purpose to use different storage like - memory, file, and more to replace dependency in your project.
 Also can be useful for convenient access to file system and much more.
 
-### pick - choose async callback contract function to up result into storage 
+### pick - choose callback last err first contract function to put result into storage 
 
 ```js
 const saver = new storage.File("collection");
