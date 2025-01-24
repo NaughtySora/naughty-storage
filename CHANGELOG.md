@@ -9,3 +9,7 @@
 
 - Memory storage testing
 - README.md
+
+## [0.2.1] - 2025-01-24
+
+- renaming

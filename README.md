@@ -17,31 +17,31 @@
 ### pick - choose callback last err first contract function to put result into storage 
 
 ```js
-const saver = new storage.File("collection");
-await saver.pick("key", fs.readFile, "./path");
-const output = await saver.get("key");
+const storage = new FileStorage("collection");
+await storage.pick("key", fs.readFile, "./path");
+const output = await storage.get("key");
 ```
 
 ### get/set
 ```js
-const saver = new storage.File("collection");
-await saver.set("key", "some valuable string");
-const data = await saver.get("key");
+const storage = new FileStorage("collection");
+await storage.set("key", "some valuable string");
+const data = await storage.get("key");
 ```
 
 ### delete
 ```js 
-const saver = new storage.Memory("collection");
-await saver.set("key", { greet: "hello" });
-await saver.delete("key"); // boolean
+const storage = new MemoryStorage("collection");
+await storage.set("key", { greet: "hello" });
+await storage.delete("key"); // boolean
 ```
 
 ### iteration
 ```js 
-const saver = storage.File("collection");
-await saver.set("key", {a: 1});
-await saver.set("key-1", {b: 2});
-await saver.set("key-2", {c: 3});
+const storage = FileStorage("collection");
+await storage.set("key", {a: 1});
+await storage.set("key-1", {b: 2});
+await storage.set("key-2", {c: 3});
 
 for await (const entry of storage) {
   // ["key", {a: 1}]

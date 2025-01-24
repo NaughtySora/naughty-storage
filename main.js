@@ -1,6 +1,6 @@
 "use strict";
 
 module.exports = {
-  Memory: require("./lib/Memory.js"),
-  File: require("./lib/File.js"),
+  MemoryStorage: require("./lib/MemoryStorage.js"),
+  FileStorage: require("./lib/FileStorage.js"),
 };

@@ -1,9 +1,9 @@
 "use strict";
 
-const Memory = require("../lib/Memory");
-const File = require("../lib/File");
+const MemoryStorage = require("../lib/MemoryStorage");
+const FileStorage = require("../lib/FileStorage");
 
 const test = require("./test");
 
-test(Memory);
-test(File);
+test(MemoryStorage);
+test(FileStorage);
