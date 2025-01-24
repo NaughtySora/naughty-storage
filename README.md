@@ -11,7 +11,7 @@
 
 - Initial purpose to use different storages like - memory, file, and more to replace dependency in your project.
 - Also can be useful for convenient access to file system and much more.
-- Intially File storage saves data into root package folder (node_modules), to change this use File.location(path) static method in root project file
+- Intially File storage **saves data into root package folder (node_modules)**, to change this use File.location(path) static method in root project file
 
 ### pick - choose callback last err first contract function to put result into storage 
 
