@@ -1,6 +1,6 @@
 {
   "name": "naughty-storage",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "author": "NaughtySora <naughtysora@proton.me>",
   "description": "Nodejs storage for inverting dependency of you application, same contract",
   "license": "MIT",

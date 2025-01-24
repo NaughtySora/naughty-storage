@@ -1,6 +1,6 @@
 type Callback = (...args: any[]) => any;
 
-export class Memory {
+export class MemoryStorage {
   constructor(collection: string);
   get(name: string): Promise<any>;
   set(name: string, data: any): Promise<boolean>;
@@ -18,7 +18,7 @@ export class Memory {
   static location(dist: string): void;
 }
 
-export class File {
+export class FileStorage {
   constructor(collection: string);
   get(name: string): Promise<any>;
   set(name: string, data: any): Promise<boolean>;
