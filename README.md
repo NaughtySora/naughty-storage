@@ -13,6 +13,17 @@
 - Also can be useful for convenient access to file system and much more.
 - Intially FileStorage **saves data into root package folder (node_modules)**, to change this use File.location(path) static method in root project file
 
+### change FileStorage root storage location;
+```js
+
+const main = () => {
+  //root project file
+  FileStorage.location("./");
+  await startDB();
+  await startSomeServer();
+};
+```
+
 ### pick - choose callback last err first contract function to put result into storage 
 
 ```js
