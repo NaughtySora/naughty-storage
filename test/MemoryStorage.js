@@ -1,41 +1,26 @@
 "use strict";
 
-const fs = require("node:fs");
-const assert = require("node:assert");
+const { describe, it } = require("node:test");
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const Storage = require("../lib/MemoryStorage.js");
 
-const test = async (tests) => {
-  const results = [];
-  const status = [];
-  for (const test of tests) {
-    try {
-      await test();
-      status.push({ name: test.name, status: "SUCCESS" });
-    } catch (reason) {
-      results.push(reason);
-      status.push({ name: test.name, status: "FAIL" });
-    }
-  }
-  results.length && console.table(results);
-  console.table(status);
-};
-
-module.exports = (Storage) => {
-  const pick = async () => {
+describe('MemoryStorage', async () => {
+  await it('pick', async () => {
     const storage = new Storage("test-1");
     await storage.pick("file", fs.readFile, __filename);
-    const output = await storage.get("file");
-    assert(Buffer.isBuffer(output));
-  };
+    assert.ok(Buffer.isBuffer(await storage.get("file")));
+  });
 
-  const set = async () => {
+  await it('set', async () => {
     const storage = new Storage("test-2");
     const status = "active";
     await storage.set("abc", status);
     const data = await storage.get("abc");
-    assert.strictEqual(data, status);
-  };
+    assert.equal(data, status);
+  });
 
-  const keys = async () => {
+  await it('keys', async () => {
     const storage = new Storage("test-3");
     const data = { a: 1, b: 2, c: 3 };
     const entries = Object.entries(data);
@@ -44,12 +29,11 @@ module.exports = (Storage) => {
       await storage.set(key, value);
     }
     for await (const key of storage.keys()) {
-      const expected = iter.next().value[0];
-      assert.strictEqual(key, expected);
+      assert.equal(key, iter.next().value[0]);
     }
-  };
+  });
 
-  const values = async () => {
+  await it('values', async () => {
     const storage = new Storage("test-4");
     const data = { a: 1, b: 2, c: 3 };
     const entries = Object.entries(data);
@@ -58,11 +42,11 @@ module.exports = (Storage) => {
       await storage.set(key, value);
     }
     for await (const value of storage.values()) {
-      assert.strictEqual(value, iter.next().value[1]);
+      assert.equal(value, iter.next().value[1]);
     }
-  };
+  });
 
-  const entries = async () => {
+  await it('entries', async () => {
     const storage = new Storage("test-5");
     const entries = Object.entries({ a: 1, b: 2, c: 3 });
     const iter = entries.values();
@@ -71,31 +55,29 @@ module.exports = (Storage) => {
     }
     for await (const [key, value] of storage.entries()) {
       const [expectedKey, expectedValue] = iter.next().value;
-      assert.strictEqual(key, expectedKey);
-      assert.strictEqual(value, expectedValue);
+      assert.equal(key, expectedKey);
+      assert.equal(value, expectedValue);
     }
-  };
+  });
 
-  const del = async () => {
+  await it('delete', async () => {
     const storage = new Storage("test-6");
     const data = { greet: "hello" };
     await storage.set("a", data);
-    const expected = await storage.get("a");
-    assert.deepEqual(expected, data);
-    await storage.delete("a");
-    const valueGone = await storage.get("a");
-    assert.deepEqual(valueGone, null);
-  };
+    assert.deepEqual(await storage.get("a"), data);
+    assert.ok(await storage.delete("a"));
+    assert.equal(await storage.get("a"), undefined);
+  });
 
-  const has = async () => {
+  await it('has', async () => {
     const storage = new Storage("test-7");
     const data = { greet: "hello" };
     await storage.set("a", data);
-    assert.strictEqual(await storage.has("a"), true);
+    assert.equal(await storage.has("a"), true);
     assert.deepEqual(await storage.get("a"), data);
-  };
+  });
 
-  const clear = async () => {
+  await it('clear', async () => {
     const storage = new Storage("test-8");
     const entries = Object.entries({ a: 1, b: 2, c: 3 });
     const iter = entries.values();
@@ -104,14 +86,14 @@ module.exports = (Storage) => {
     }
     for await (const key of storage.keys()) {
       const expected = iter.next().value[0];
-      assert.strictEqual(key, expected);
+      assert.equal(key, expected);
     }
     await storage.clear();
     const size = await storage.size;
-    assert.strictEqual(size, 0);
-  };
+    assert.equal(size, 0);
+  });
 
-  const asyncIter = async () => {
+  await it('asyncIter', async () => {
     const storage = new Storage("test-9");
     const entries = Object.entries({ a: 1, b: 2, c: 3 });
     for (const [key, value] of entries) {
@@ -122,17 +104,20 @@ module.exports = (Storage) => {
       assert.deepEqual(entry, entries[idx]);
       idx++;
     }
-  };
+  });
 
-  const singleton = async () => {
+  await it('singleton', async () => {
     const storage = new Storage("singleton");
     const storage2 = new Storage("singleton");
     const storage3 = new Storage("singleton");
     assert.deepEqual(storage, storage2, storage3);
-  };
+  });
 
-  const truncate = async () => Storage.truncate();
-  const destroy = async () => Storage.destroy();
+  await it('truncate', async () => {
+    await Storage.truncate();
+  });
 
-  test([pick, set, keys, values, entries, del, has, clear, asyncIter, singleton, destroy, truncate]);
-};
+  await it('destroy', async () => {
+    await Storage.destroy();
+  });
+});
